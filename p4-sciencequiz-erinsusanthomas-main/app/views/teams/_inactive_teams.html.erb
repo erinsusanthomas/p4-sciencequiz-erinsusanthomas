@@ -1,0 +1,13 @@
+<% unless @inactive_teams.empty? %>
+  <div class="card" id="inactive_teams">
+    <div class="card-content">
+      <span class="card-title">Inactive Teams</span>
+
+          <% for team in @inactive_teams %>
+              <li>
+                  <%= link_to team.name, team_path(team) %>
+              </li>
+          <% end %>
+    </div>
+  </div>
+<% end%>

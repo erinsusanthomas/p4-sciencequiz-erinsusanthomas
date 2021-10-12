@@ -1,0 +1,33 @@
+<% if @active_senior_teams.empty? %>
+  <h4>No active senior teams at this time</h4>
+<% else %>
+  <div class="card" id="current_senior_teams">
+    <div class="card-content">
+      <span class="card-title">Active Senior Teams in ScienceQuiz</span>
+      <table class="striped highlight">
+        <thead>
+          <th>Team</th>
+          <th>Organization</th>
+          <th>Members</th>
+          <th class="align_center">Edit</th>
+        </thead>
+        <% for team in @active_senior_teams %>
+          <tr>
+            <td><%= link_to team.name, team_path(team) %></td>
+            <td><%= link_to team.organization.name, organization_path(team.organization) %></td>
+            <td><%= team.student_teams.current.count %></td>
+
+            <td class="align_center">
+              <%= link_to edit_team_path(team) do %>
+                  <i class="material-icons">edit</i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate @active_senior_teams, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    </div>
+  </div>
+<% end%>

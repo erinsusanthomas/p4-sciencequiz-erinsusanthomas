@@ -1,0 +1,7 @@
+<p>
+  <%= organization.street_1 %><br>
+  <% unless organization.street_2.nil? %>
+    <%= organization.street_2 %><br>
+  <% end %>
+  <%= organization.city %>, <%= organization.state %> <%= organization.zip %>
+</p>

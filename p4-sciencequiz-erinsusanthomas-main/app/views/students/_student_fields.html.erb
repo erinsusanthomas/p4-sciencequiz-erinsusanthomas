@@ -1,0 +1,5 @@
+<%= f.input :first_name, label_html: { class: 'active' } %>
+<%= f.input :last_name, label_html: { class: 'active' } %>
+<%= f.input :organization_id, collection: Organization.active.alphabetical.to_a, include_blank: true %>
+<%= f.input :grade, label_html: { class: 'active' } %>
+<%= f.input :active %>

@@ -1,0 +1,13 @@
+<% unless @inactive_organizations.empty? %>
+  <div class="card" id="current_teams">
+    <div class="card-content">
+      <span class="card-title">Inactive Organizations</span>
+
+          <% for organization in @inactive_organizations %>
+              <li>
+                  <%= link_to organization.name, organization_path(organization) %>
+              </li>
+          <% end %>
+    </div>
+  </div>
+<% end%>

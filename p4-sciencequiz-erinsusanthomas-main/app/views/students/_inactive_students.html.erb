@@ -1,0 +1,13 @@
+<% unless @inactive_students.empty? %>
+  <div class="card" id="current_teams">
+    <div class="card-content">
+      <span class="card-title">Inactive Students</span>
+
+          <% for student in @inactive_students %>
+              <li>
+                  <%= link_to student.name, student_path(student) %>
+              </li>
+          <% end %>
+    </div>
+  </div>
+<% end%>

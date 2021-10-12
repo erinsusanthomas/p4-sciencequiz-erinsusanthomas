@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-content">
+    <h5><%= @organization.name %></h5><br />
+
+    <b>Short Name:&nbsp;&nbsp;</b>
+      <%= @organization.short_name %><br><br>
+
+    <b>Address:&nbsp;&nbsp;</b>
+      <%= render partial: "partials/address", locals: { organization: @organization } %>    
+      <br />
+
+    <b>Active?&nbsp;&nbsp;</b>
+      <%= @organization.active ? "Yes" : "No" %><br><br>
+
+    <b>Joined ScienceQuiz in <%= @organization.created_at.year %></b><br><br><br>
+
+  </div>
+</div>

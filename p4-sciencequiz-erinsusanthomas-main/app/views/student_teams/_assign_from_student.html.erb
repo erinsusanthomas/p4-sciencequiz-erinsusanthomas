@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col s7">
+    <h5>New Assignment for <%= @student.proper_name %>:</h5>
+    <h6>Currently on <%= @current_team.name %></h6>
+    <br />
+    <%= simple_form_for(@student_team) do |f| %>
+      <%= f.error_notification %>
+      <div class="row">
+        <div class="form-inputs">
+          <% if @student.junior? %>
+            <%= f.input :team_id, collection: (Team.for_organization(@student.organization).juniors.active.alphabetical.to_a - [@current_team]), include_blank: true %>
+          <% else %>
+            <%= f.input :team_id, collection: (Team.for_organization(@student.organization).seniors.active.alphabetical.to_a - [@current_team]), include_blank: true %>
+          <% end %>
+          <%= f.input :position, collection: (1..5).to_a %>
+          <%= f.input :student_id, as: :hidden, input_html: { value: @student.id } %>
+          <%= f.input :from, as: :hidden, input_html: { value: "student" } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-actions col s8">
+          <%= f.button :submit %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col s5">
+  </div>
+</div>

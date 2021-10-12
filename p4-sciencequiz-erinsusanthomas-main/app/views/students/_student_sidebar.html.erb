@@ -1,0 +1,30 @@
+<% unless @team_history.empty? %>
+  <div class="card" id="current_teams">
+    <div class="card-content">
+      <span class="card-title">Team History</span>
+      <table class="lined">
+        <thead>
+          <th>Team</th>
+          <th>Starting</th>
+          <th>Ending</th>
+        </thead>
+          <% for assignment in @team_history %>
+            <tr>
+              <td><%= link_to assignment.team.name, team_path(assignment.team) %></td>
+              <td><%= assignment.start_date.strftime("%m/%d/%y") %></td>
+              <td><%= assignment.end_date.nil? ? "--" : assignment.end_date.strftime("%m/%d/%y") %></td>
+            </tr>
+          <% end %>
+      </table>
+      <div class="card-action">
+        <%= link_to "Add to a new team", new_student_team_path(student_id: @student.id) %>
+      </div>
+    </div>
+  </div>
+<% else%>
+    <div class="card grey lighten-3">
+      <div class="card-action">
+        <%= link_to "Add to a new team", new_student_team_path(student_id: @student.id) %>
+      </div>
+    </div>
+<% end%>

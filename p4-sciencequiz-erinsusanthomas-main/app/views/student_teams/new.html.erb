@@ -1,0 +1,5 @@
+<% if @team %>
+  <%= render :partial => "assign_from_team" %>
+<% else %>
+  <%= render :partial => "assign_from_student" %>
+<% end %>

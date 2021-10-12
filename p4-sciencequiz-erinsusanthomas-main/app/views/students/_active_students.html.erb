@@ -1,0 +1,36 @@
+<% if @active_students.empty? %>
+  <h4>No active students at this time</h4>
+<% else %>
+  <div class="card" id="current_students">
+    <div class="card-content">
+      <span class="card-title">Active Students in ScienceQuiz</span>
+      <table class="striped highlight">
+        <thead>
+          <th>Student Name</th>
+          <th>Organization</th>
+          <th>Current Team</th>
+          <th class="align_center">Edit</th>
+        </thead>
+        <% for student in @active_students %>
+          <tr>
+            <td><%= link_to student.name, student_path(student) %></td>
+            <td><%= link_to student.organization.name, organization_path(student.organization) %></td>
+            <% if student.current_team.nil? %>
+              <td>N/A</td>
+            <% else %>
+              <td><%= link_to student.current_team.name, team_path(student.current_team) %></td>
+            <% end %>
+            <td class="align_center">
+              <%= link_to edit_student_path(student) do %>
+                  <i class="material-icons">edit</i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate @active_students, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    </div>
+  </div>
+<% end%>

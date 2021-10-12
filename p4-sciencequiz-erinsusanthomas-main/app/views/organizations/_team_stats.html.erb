@@ -1,0 +1,30 @@
+<% unless @current_teams.empty? %>
+  <div class="card" id="current_teams">
+    <div class="card-content">
+      <span class="card-title">Current Teams - <%= @organization.short_name %></span>
+      <table class="lined">
+        <thead>
+          <th>Name</th>
+          <th>Division</th>
+        </thead>
+          <% for team in @current_teams %>
+            <tr>
+              <td>
+                  <%= link_to team.name, team_path(team) %>
+              </td>
+              <td><%= team.division.capitalize %></td>
+            </tr>
+          <% end %>
+      </table>
+      <div class="card-action">
+        <%= link_to "Add a new team", new_team_path(organization_id: @organization.id) %>
+      </div>
+    </div>
+  </div>
+<% else%>
+    <div class="card grey lighten-3">
+      <div class="card-action">
+        <%= link_to "Add a new team", new_team_path(organization_id: @organization.id) %>
+      </div>
+    </div>
+<% end%>

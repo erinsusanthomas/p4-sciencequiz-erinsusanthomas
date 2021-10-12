@@ -1,0 +1,31 @@
+<% if @active_organizations.empty? %>
+  <h4>No active organizations at this time</h4>
+<% else %>
+  <div class="card" id="current_organizations">
+    <div class="card-content">
+      <span class="card-title">Active Organizations</span>
+      <table class="striped highlight">
+        <thead>
+          <th>Name</th>
+          <th>State</th>
+          <th class="align_center">Edit</th>
+        </thead>
+        <% for organization in @active_organizations %>
+          <tr>
+            <td><%= link_to organization.name, organization_path(organization) %></td>
+            <td><%= organization.state %></td>
+
+            <td class="align_center">
+              <%= link_to edit_organization_path(organization) do %>
+                  <i class="material-icons">edit</i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate @active_organizations, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    </div>
+  </div>
+<% end%>

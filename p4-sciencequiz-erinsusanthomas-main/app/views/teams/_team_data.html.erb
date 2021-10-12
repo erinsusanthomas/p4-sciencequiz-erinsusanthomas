@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-content">
+    <h5><%= @team.name %></h5><br />
+
+    <b>Organization:&nbsp;&nbsp;</b>
+      <%= link_to @team.organization.name, organization_path(@team.organization) %><br><br>
+
+    <b>Division:&nbsp;&nbsp;</b>
+      <%= @team.division.capitalize %><br><br>
+
+    <b>Active?&nbsp;&nbsp;</b>
+      <%= @team.active ? "Yes" : "No" %><br><br>
+
+  </div>
+</div>

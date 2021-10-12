@@ -1,0 +1,30 @@
+<% unless @current_students.empty? %>
+  <div class="card" id="current_teams">
+    <div class="card-content">
+      <span class="card-title">Current Students - <%= @organization.short_name %></span>
+      <table class="lined">
+        <thead>
+          <th>Name</th>
+          <th>Grade</th>
+        </thead>
+          <% for student in @current_students %>
+            <tr>
+              <td>
+                  <%= link_to student.name, student_path(student) %>
+              </td>
+              <td><%= student.grade %></td>
+            </tr>
+          <% end %>
+      </table>
+      <div class="card-action">
+        <%= link_to "Add a new student", new_student_path(organization_id: @organization.id) %>
+      </div>
+    </div>
+  </div>
+<% else%>
+    <div class="card grey lighten-3">
+      <div class="card-action">
+        <%= link_to "Add a new student", new_student_path(organization_id: @organization.id) %>
+      </div>
+    </div>
+<% end%>

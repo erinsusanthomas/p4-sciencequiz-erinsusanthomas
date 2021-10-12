@@ -1,0 +1,4 @@
+<%= f.input :name, label_html: { class: 'active' } %>
+<%= f.input :organization_id, collection: Organization.active.alphabetical.to_a, include_blank: true %>
+<%= f.input :division, collection: Team::DIVISION_LIST, include_blank: true %>
+<%= f.input :active %>
